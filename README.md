@@ -1,70 +1,206 @@
-# Getting Started with Create React App
+### True\_live.ai
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+True\_live.ai is an innovative project designed to bring real-time analytics, machine learning insights, and advanced AI-driven functionalities into a unified platform. This repository provides a robust foundation for live data processing and AI-based decision-making across various applications.
 
-## Available Scripts
+### Table of Contents
 
-In the project directory, you can run:
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Screenshots](#screenshots)
+- [Contributing](#contributing)
+- [License](#license)
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Features
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+-Verify Multimedia Content: Authenticate the credibility of video and audio files.
+-Article Verification: Analyze and verify the authenticity of written articles.
+-News Summarization: Generate concise summaries of news articles for quick insights.
 
-### `npm test`
+### Tech Stack
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **Backend**: Python, Flask
+- **Frontend**: React.js
+- **AI/ML Libraries**: TensorFlow, PyTorch, Scikit-learn
 
-### `npm run build`
+### Installation
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Follow these steps to set up the project locally:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+#### Clone the Repository
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+git clone https://github.com/svsaurav95/True_live.ai.git
+cd True_live.ai
+```
 
-### `npm run eject`
+#### Set Up Virtual Environment
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```bash
+python -m venv env
+source env/bin/activate   # On Windows, use `env\Scripts\activate`
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+#### Install Dependencies
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```bash
+pip install -r requirements.txt
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+#### Configure Environment Variables
 
-## Learn More
+Create a `.env` file and add necessary configurations:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```env
+FLASK_APP=app.py
+DATABASE_URL=<your_database_url>
+SECRET_KEY=<your_secret_key>
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+#### Run the Application
 
-### Code Splitting
+```bash
+flask run
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+#### Access the Application
 
-### Analyzing the Bundle Size
+Open your browser and navigate to `http://localhost:5000`.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Usage
 
-### Making a Progressive Web App
+#### Uploading Data
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- Navigate to the dashboard and upload your dataset.
+- Supported formats: CSV, JSON.
 
-### Advanced Configuration
+#### Running AI Models
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- Select a pre-trained model or upload your own.
+- Configure model parameters and run predictions.
 
-### Deployment
+#### Live Analytics
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+- Visualize real-time data insights on the dashboard.
+- Customize charts and reports.
 
-### `npm run build` fails to minify
+#### Extending Pipelines
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Use the `pipelines/` directory to add new workflows.
+
+### Screenshots
+
+Add screenshots of your application below to showcase its features and user interface:
+
+#### Dashboard Overview
+
+```markdown
+![Dashboard Overview](path/to/screenshot1.png)
+```
+
+#### Data Upload Interface
+
+```markdown
+![Data Upload Interface](path/to/screenshot2.png)
+```
+
+#### Analytics Visualization
+
+```markdown
+![Analytics Visualization](path/to/screenshot3.png)
+```
+
+### Contributing
+
+Contributions are welcome! Follow these steps to contribute:
+
+#### Fork the Repository
+
+```bash
+git clone https://github.com/svsaurav95/True_live.ai.git
+```
+
+#### Create a New Branch
+
+```bash
+git checkout -b feature-name
+```
+
+#### Commit Your Changes
+
+```bash
+git commit -m "Add new feature"
+```
+
+#### Push to Your Branch
+
+```bash
+git push origin feature-name
+```
+
+#### Open a Pull Request
+
+Submit your pull request to the main repository.
+
+### License
+
+This project is licensed under the [MIT License](LICENSE).
+
+---
+
+### Author
+
+Developed by **Team Digi Dynamos**. For inquiries, please contact [svsaurav95@gmail.com](mailto\:svsaurav95@gmail.com).
+
+---
+
+Happy coding!
+
+### Script
+
+#### Clone the Repository
+
+```bash
+git clone https://github.com/svsaurav95/True_live.ai.git
+cd True_live.ai
+```
+
+#### Set Up Virtual Environment
+
+```bash
+python -m venv env
+source env/bin/activate   # On Windows, use `env\Scripts\activate`
+```
+
+#### Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+#### Configure Environment Variables
+
+```bash
+cat <<EOL > .env
+FLASK_APP=app.py
+DATABASE_URL=<your_database_url>
+SECRET_KEY=<your_secret_key>
+EOL
+```
+
+#### Run the Application
+
+```bash
+flask run
+```
+
+#### Access the Application
+
+```markdown
+Open your browser and navigate to:
+[http://localhost:5000](http://localhost:5000)
+```
+
