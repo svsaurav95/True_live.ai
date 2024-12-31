@@ -9,8 +9,8 @@ True\_live.ai is an innovative project designed to bring real-time analytics, ma
 ### Table of Contents
 
 - [Features](#features)
-- [Tech Stack](#tech-stack)
 - [Usage](#usage)
+- [AI Pipeline for News Verfication](#AI Pipeline for News Verfication)
 - [Installation](#installation)
 - [Screenshots](#screenshots)
 - [Contributing](#contributing)
@@ -26,14 +26,39 @@ True\_live.ai is an innovative project designed to bring real-time analytics, ma
 - 
 <p align="center">
   <img src="images/get_started.jpg" alt= "get_started" width="45%" />
-  <img src="images/result.jpg" alt="result" width="45%" />
 </p>
 
-### Tech Stack
+### Usage
+1. Select a video from your local device and upload it.
+2. The model starts processing the video.
+3. The results are provided with a claim status: verified or unverified.
+4. The system provides a transcription of the news using ASR (Automatic Speech Recognition).
 
-- **Backend**: Python, Flask
-- **Frontend**: React.js
-- **AI/ML Libraries**: TensorFlow, PyTorch, Scikit-learn
+   ![Results](images/result.jpg "Results")
+   
+### AI Pipeline for News Verfication
+
+1. **Extract Audio from Video**:
+   The pipeline begins by extracting the audio track from the uploaded video file.
+
+2. **Audio Sampling with Vosk ASR**:
+   The extracted audio is then sampled according to the configuration of the Vosk Automatic Speech Recognition (ASR) system. Vosk processes the audio to convert speech into text.
+
+   #### Vosk Model for ASR (Automatic Speech Recognition)
+   - Model: [vosk-model-en-in-0.5](https://alphacephei.com/vosk/models/vosk-model-en-in-0.5.zip))
+
+3. **Transcription for Claim Detection**:
+   The transcribed text from Vosk ASR is passed to the claim detection model. This model analyzes the text to determine whether the news claim is **verified** or **unverified**.
+
+   #### News Detection Model (BA-Claim/DistilBERT)
+   - Model: [ba-claim/distilbert](https://huggingface.co/ba-claim/distilbert)
+
+4. **Verification and Confidence Score**:
+   Based on the claim detection model's analysis, the output is either **verified** or **unverified**, accompanied by a confidence score. The confidence score indicates how strongly the model believes in the accuracy of its prediction, helping assess the reliability of the news claim.
+
+
+
+
 
 ### Installation
 
@@ -80,6 +105,13 @@ flask run
 Open your browser and navigate to `http://localhost:5000`.
 
 ### Usage
+1. Select a video from your local device and upload it.
+2. The model starts processing the video.
+3. The results are provided with a claim status: verified or unverified.
+4. The system provides a transcription of the news using ASR (Automatic Speech Recognition).
+
+   ![Results](images/result.jpg "Results")
+
 
 #### Uploading Data
 
