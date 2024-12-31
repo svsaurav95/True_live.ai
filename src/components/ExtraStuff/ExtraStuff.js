@@ -12,7 +12,7 @@ const ExtraStuff = () => {
 
   return (
     <div className={styles.container}>
-      {/* Section 2: Feature 1 - YouTube link transcription and fact-checking */}
+      {/* YouTube link transcription and fact-checking */}
       <div className={styles.featureSection}>
         <div className={styles.textLeft}>
           <h4 className={styles.featureTitle}>Feature 1</h4>
@@ -40,7 +40,7 @@ const ExtraStuff = () => {
         </div>
       </div>
 
-      {/* Section 3: Feature 2 - News article link fact-checking */}
+      {/*  News article link fact-checking */}
       <div className={styles.featureSectionReverse}>
         <div className={styles.imageContainer}>
           <img src={articlefeature2} alt="YouTube feature" className={styles.imageLeft} />
@@ -67,7 +67,7 @@ const ExtraStuff = () => {
           </ul>
         </div>
       </div>
-      {/* Section 4: Feature 3 - News article summarization */}
+      {/*  News article summarization */}
       <div className={styles.featureSection}>
         <div className={styles.textLeft}>
           <h4 className={styles.featureTitle}>Feature 3</h4>
@@ -95,7 +95,7 @@ const ExtraStuff = () => {
         </div>
       </div>
       
-      {/* Section 5: Why use TrueLive.ai*/}
+      {/*  Why use TrueLive.ai*/}
       <div className={styles.whyUseSection}>
       <h2 className={styles.title}>Why Use <span className={styles.highlight}>TrueLive.ai</span> ?</h2>
       <div className={styles.cards}>
