@@ -6,25 +6,16 @@ import wave
 import json
 from transformers import AutoModelForSequenceClassification, AutoTokenizer
 
-# Initialize Flask app
 app = Flask(__name__)
 
-# Paths for Vosk and Transformer models
-VOSK_MODEL_PATH = r"C:\Users\surya\Desktop\vosk-model-en-in-0.5"
-TRANSFORMER_MODEL_PATH = r"C:\Users\surya\Desktop\_token model 1"
+VOSK_MODEL_PATH = r"path_to_your_vosk-model-en-in-0.5"
+TRANSFORMER_MODEL_PATH = r"path_to_your_ba-claim/distilbert"
 
-# Ensure models are available
-if not os.path.exists(VOSK_MODEL_PATH):
-    raise FileNotFoundError(f"Vosk model not found at {VOSK_MODEL_PATH}. Please download it.")
-if not os.path.exists(TRANSFORMER_MODEL_PATH):
-    raise FileNotFoundError(f"Transformer model not found at {TRANSFORMER_MODEL_PATH}.")
-
-# Load Vosk and Transformer models
 vosk_model = Model(VOSK_MODEL_PATH)
 tokenizer = AutoTokenizer.from_pretrained(TRANSFORMER_MODEL_PATH)
 model = AutoModelForSequenceClassification.from_pretrained(TRANSFORMER_MODEL_PATH)
 
-# Function to extract and resample audio from video
+#  extract and resample audio from video
 def extract_and_resample_audio(video_path, output_audio_path="temp_audio.wav", target_sample_rate=16000):
     try:
         subprocess.run(
@@ -37,7 +28,7 @@ def extract_and_resample_audio(video_path, output_audio_path="temp_audio.wav", t
     except Exception as e:
         return None
 
-# Function to transcribe audio using Vosk
+# transcribe audio using Vosk
 def transcribe_audio_vosk(audio_path):
     try:
         with wave.open(audio_path, "rb") as wf:
@@ -59,7 +50,7 @@ def transcribe_audio_vosk(audio_path):
     except Exception as e:
         return ""
 
-# Function to verify claims using the transformer model
+# verify claims using the transformer model
 def check_claim(claim):
     try:
         inputs = tokenizer(claim, return_tensors="pt", truncation=True, padding=True, max_length=512)
@@ -75,7 +66,6 @@ def check_claim(claim):
     except Exception as e:
         return "Error in claim verification."
 
-# Flask route for the fact-checking API
 @app.route('/', methods=['GET', 'POST'])
 def home():
     result = None
@@ -84,7 +74,7 @@ def home():
 
     if request.method == 'POST':
         try:
-            # Check if a file is uploaded
+
             if 'video' not in request.files:
                 error_message = "No file uploaded."
                 return render_template_string(html_template, result=result, transcription=transcription, error_message=error_message)
@@ -93,19 +83,19 @@ def home():
             video_path = "uploaded_video.mp4"
             video_file.save(video_path)
 
-            # Step 1: Extract and resample audio
+            #Extract and resample audio
             audio_path = extract_and_resample_audio(video_path)
             if not audio_path:
                 error_message = "Audio extraction failed."
                 return render_template_string(html_template, result=result, transcription=transcription, error_message=error_message)
 
-            # Step 2: Transcribe the audio
+            # Transcribe the audio
             transcription = transcribe_audio_vosk(audio_path)
             if not transcription:
                 error_message = "Audio transcription failed."
                 return render_template_string(html_template, result=result, transcription=transcription, error_message=error_message)
 
-            # Step 3: Verify claims
+            #  Verify claims
             result = check_claim(transcription)
 
         except Exception as e:
