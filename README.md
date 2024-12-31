@@ -10,8 +10,8 @@ True\_live.ai is an innovative project designed to bring real-time analytics, ma
 
 - [Features](#features)
 - [Tech Stack](#tech-stack)
-- [Installation](#installation)
 - [Usage](#usage)
+- [Installation](#installation)
 - [Screenshots](#screenshots)
 - [Contributing](#contributing)
 - [License](#license)
@@ -23,6 +23,11 @@ True\_live.ai is an innovative project designed to bring real-time analytics, ma
 - Verify Multimedia Content: Authenticate the credibility of video and audio files.
 - Article Verification: Analyze and verify the authenticity of written articles.
 - News Summarization: Generate concise summaries of news articles for quick insights.
+- 
+<p align="center">
+  <img src="images/get_started.jpg width="45%" />
+  <img src="images/result.jpg" alt="result" width="45%" />
+</p>
 
 ### Tech Stack
 
