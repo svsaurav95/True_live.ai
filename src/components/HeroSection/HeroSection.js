@@ -20,8 +20,8 @@ const HeroSection = () => {
 
   const handlePastearticleClick = async () => {
     try {
-      const text = await navigator.clipboard.readText(); // Read from clipboard
-      setArticleURL(text); // Set the pasted text into the input field
+      const text = await navigator.clipboard.readText();
+      setArticleURL(text); 
     } catch (error) {
       console.error("Failed to read clipboard contents:", error);
     }
@@ -68,7 +68,7 @@ const HeroSection = () => {
     if (!isSignedIn) {
       navigate("/login"); // Redirect only if the user is not signed in
     } else {
-      setModalOpen(true); // Open modal if the user is signed in
+      setModalOpen(true); 
     }
   };
 
@@ -195,10 +195,10 @@ const HeroSection = () => {
       <div class="container">
         <h4>Video Analysis Results</h4>
         <div class="result-section">
-          <p><strong>Claim Status:</strong> <span class="status">Verified</span></p>
+          <p><strong>Claim Status:</strong> <span class="status"> ${data.claim_verification.status}</span></p>
         </div>
         <div class="result-section">
-          <p><strong>Confidence:</strong> 73%</p>
+          <p><strong>Confidence:</strong> ${data.claim_verification.confidence}</p>
         </div>
         <div class="speedometer">
           <svg width="150" height="150">
@@ -213,7 +213,9 @@ const HeroSection = () => {
         </div>
       </div>
       <script>
-        const confidence = 73; // Hardcoded confidence value (0-100)
+        const claim_status = ${data.claim_verification.status};
+        const confidence = ${data.claim_verification.confidence}; 
+        
         const progressCircle = document.querySelector('.progress');
         const percentageText = document.querySelector('.percentage');
         const statusElement = document.querySelector('.status'); // Selecting the status element
@@ -224,8 +226,7 @@ const HeroSection = () => {
         progressCircle.style.strokeDasharray = circumference;
         progressCircle.style.strokeDashoffset = circumference;
 
-        if (confidence < 50) {
-          statusElement.textContent = "Unverified";
+        if (claim_status == "Unverified") {
           statusElement.style.backgroundColor = "rgb(255, 69, 58)"; // Change background to red
         }
 
@@ -241,10 +242,10 @@ const HeroSection = () => {
             currentPercentage += percentageStep;
             const progress = (1 - currentPercentage / 100) * circumference;
             progressCircle.style.strokeDashoffset = progress;
-            percentageText.textContent = \`\${Math.round(currentPercentage)}%\`;
+            percentageText.textContent = \\${Math.round(currentPercentage)}%\;
           } else {
             clearInterval(animationInterval);
-            percentageText.textContent = \`\${confidence}%\`; // Ensure the percentage matches exactly
+            percentageText.textContent = \\${confidence}%\; // Ensure the percentage matches exactly
             progressCircle.style.strokeDashoffset = (1 - confidence / 100) * circumference;
           }
         }, intervalTime);
@@ -367,10 +368,10 @@ articleWindow.document.write(`
       <div class="container">
         <h4>Article Verification Results</h4>
         <div class="result-section">
-          <p><strong>Status:</strong> <span class="status">Unverified</span></p>
+          <p><strong>Status:</strong> <span class="status">${data.claim_verification.status}</span></p>
         </div>
         <div class="result-section">
-          <p><strong>Confidence:</strong> 84%</p> 
+          <p><strong>Confidence:</strong> ${data.claim_verification.confidence}%</p> 
         </div>
         <div class="speedometer">
           <svg width="150" height="150">
@@ -385,7 +386,9 @@ articleWindow.document.write(`
         </div>
       </div>
       <script>
-        const confidence = 84; // Hardcoded confidence value (0-100)
+        const claim_status = ${data.claim_verification.status};
+        const confidence = ${data.claim_verification.confidence}; 
+        
         const progressCircle = document.querySelector('.progress');
         const percentageText = document.querySelector('.percentage');
         const statusElement = document.querySelector('.status'); // Selecting the status element
@@ -396,8 +399,7 @@ articleWindow.document.write(`
         progressCircle.style.strokeDasharray = circumference;
         progressCircle.style.strokeDashoffset = circumference;
 
-        if (confidence < 50) {
-          statusElement.textContent = "Verified";
+        if (claim_status == "Unverified") {
           statusElement.style.backgroundColor = "rgb(255, 69, 58)"; // Change background to red
         }
 
@@ -413,10 +415,10 @@ articleWindow.document.write(`
             currentPercentage += percentageStep;
             const progress = (1 - currentPercentage / 100) * circumference;
             progressCircle.style.strokeDashoffset = progress;
-            percentageText.textContent = \`\${Math.round(currentPercentage)}%\`;
+            percentageText.textContent = \\${Math.round(currentPercentage)}%\;
           } else {
             clearInterval(animationInterval);
-            percentageText.textContent = \`\${confidence}%\`; // Ensure the percentage matches exactly
+            percentageText.textContent = \\${confidence}%\; // Ensure the percentage matches exactly
             progressCircle.style.strokeDashoffset = (1 - confidence / 100) * circumference;
           }
         }, intervalTime);
@@ -508,7 +510,7 @@ articleWindow.document.write(`
                 <h4>News Summary Results</h4>
                 <div class="result-section">
                   <p ><strong>Title:</strong> ${data.title}</p>
-                  <p><strong>Author:</strong> NDTV News Desk</p>
+                  <p><strong>Author:</strong> ${data.author}</p>
                 </div>
                 <div class="result-section">
                   <p><strong>Summary:</strong></p>
@@ -531,7 +533,7 @@ articleWindow.document.write(`
   return (
     <section style={{marginTop: "40px"}}>
       <div
-        className={`${styles.heroContent} ${isModalOpen ? styles.blurred : ""}`}
+        className={${styles.heroContent} ${isModalOpen ? styles.blurred : ""}}
         style={{
           background: "linear-gradient(to left, rgb(0, 0, 0), rgb(0, 0, 0), rgb(0, 34, 75))",
           backgroundPosition: "center",
@@ -560,11 +562,11 @@ articleWindow.document.write(`
             Into Awareness
           </h1>
           <motion.button
-            className={`${styles.getStartedBtn} text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium`}
+            className={${styles.getStartedBtn} text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium}
             onClick={handleGetStartedClick}
             style={{
               color: "white",
-              textShadow: "2px 2px 8px rgba(0, 0, 0, 0.8)", // Add shadow to the button text
+              textShadow: "2px 2px 8px rgba(0, 0, 0, 0.8)", 
             }}
           >
             Get Started
