@@ -6,7 +6,7 @@ import wave
 import ffmpeg
 import os
 import json
-from newspaper import Article
+from newspaper3k import Article
 import nltk
 from textblob import TextBlob
 from werkzeug.utils import secure_filename
