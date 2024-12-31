@@ -26,7 +26,7 @@ True\_live.ai is an innovative project designed to bring real-time analytics, ma
 - Verify Multimedia Content: Authenticate the credibility of video and audio files.
 - Article Verification: Analyze and verify the authenticity of written articles.
 - News Summarization: Generate concise summaries of news articles for quick insights.
-- 
+  
 <p align="center">
   <img src="images/get_started.jpg" alt= "get_started" width="90%" />
 </p>
@@ -37,8 +37,9 @@ True\_live.ai is an innovative project designed to bring real-time analytics, ma
 3. The results are provided with a claim status: verified or unverified.
 4. The system provides a transcription of the news using ASR (Automatic Speech Recognition).
 
-   ![Results](images/result.jpg "Results")
-   
+<p align="center">
+  <img src="images/get_started.jpg" alt= "get_started" width="80%" />
+</p>
 ### AI Pipeline for News Verfication
 
 1. **Extract Audio from Video**:
@@ -57,10 +58,11 @@ True\_live.ai is an innovative project designed to bring real-time analytics, ma
    - Model: [ba-claim/distilbert](https://huggingface.co/ba-claim/distilbert)
 
 4. **Verification and Confidence Score**:
-   Based on the claim detection model's analysis, the output is either **verified** or **unverified**, accompanied by a confidence score. The confidence score indicates how strongly the model believes in the accuracy of its prediction, helping assess the reliability of the news claim.
-
-
-
+   Based on the claim detection model's analysis, the output is either **verified** or **unverified**, accompanied by a confidence score. The confidence score indicates how strongly the model believes in the accuracy of its prediction, helping assess the reliability of the news claim
+   
+<p align="center">
+  <img src="images/result.jpg" alt= "results" width="60%" />
+</p>
 
 
 ### Installation
@@ -106,15 +108,6 @@ flask run
 #### Access the Application
 
 Open your browser and navigate to `http://localhost:5000`.
-
-### Usage
-1. Select a video from your local device and upload it.
-2. The model starts processing the video.
-3. The results are provided with a claim status: verified or unverified.
-4. The system provides a transcription of the news using ASR (Automatic Speech Recognition).
-
-   ![Results](images/result.jpg "Results")
-
 
 #### Uploading Data
 
