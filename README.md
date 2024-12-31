@@ -3,7 +3,8 @@
 True\_live.ai is an innovative project designed to bring real-time analytics, machine learning insights, and advanced AI-driven functionalities into a unified platform. This repository provides a robust foundation for live data processing and AI-based decision-making across various applications.
 
 
-![Landing Page](images/Landing_page.jpg "Landing Page Screenshot")
+<img src="images/Landing_page.jpg" alt="Landing Page" title="Landing Page Screenshot" width="600">
+
 
 
 ### Table of Contents
