@@ -43,22 +43,22 @@
 
  ### AI Pipeline for News Verification
 
-1. **Extract Audio from Video**:
+1. **Extract Audio from Video**:<br>
    The pipeline begins by extracting the audio track from the uploaded video file.
 
-2. **Audio Sampling with Vosk ASR**:
+2. **Audio Sampling with Vosk ASR**:<br>
    The extracted audio is then sampled according to the configuration of the **Vosk Automatic Speech Recognition** (ASR) system. Vosk processes the audio to convert speech into text.
 
    #### Vosk Model for ASR (Automatic Speech Recognition)
    - Model: [vosk-model-en-in-0.5](https://alphacephei.com/vosk/models/vosk-model-en-in-0.5.zip)
 
-3. **Transcription for Claim Detection**:
+3. **Transcription for Claim Detection**:<br>
    The transcribed text from Vosk ASR is passed to the claim detection model. This model analyzes the text to determine whether the news claim is **verified** or **unverified**.
 
    #### News Detection Model (BA-Claim/DistilBERT)
    - Model: [ba-claim/distilbert](https://huggingface.co/ba-claim/distilbert)
 
-4. **Verification and Confidence Score**:
+4. **Verification and Confidence Score**:<br>
    Based on the claim detection model's analysis, the output is either **verified** or **unverified**, accompanied by a **confidence score**. The confidence score indicates how strongly the model believes in the accuracy of its prediction, helping assess the reliability of the news claim
    
 
