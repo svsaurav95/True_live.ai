@@ -3,7 +3,9 @@
 True\_live.ai is an innovative project designed to bring real-time analytics, machine learning insights, and advanced AI-driven functionalities into a unified platform. This repository provides a robust foundation for live data processing and AI-based decision-making across various applications.
 
 
-<img src="images/Landing_page.jpg" alt="Landing Page" title="Landing Page Screenshot" width="600">
+<p align="center">
+  <img src="images/Landing_page.jpg" alt="Landing Page" title="Landing Page Screenshot" width="750">
+</p>
 
 
 
@@ -26,7 +28,7 @@ True\_live.ai is an innovative project designed to bring real-time analytics, ma
 - News Summarization: Generate concise summaries of news articles for quick insights.
 - 
 <p align="center">
-  <img src="images/get_started.jpg" alt= "get_started" width="45%" />
+  <img src="images/get_started.jpg" alt= "get_started" width="90%" />
 </p>
 
 ### Usage
