@@ -15,11 +15,8 @@ import subprocess
 nltk.download('movie_reviews')
 nltk.download('punkt')
 
-# Initialize Flask app
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}})
-
-# Configure file upload
 UPLOAD_FOLDER = 'uploads'
 if not os.path.exists(UPLOAD_FOLDER):
     os.makedirs(UPLOAD_FOLDER)
@@ -33,9 +30,8 @@ def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 # Load models
-CLAIM_MODEL_PATH = r"C:\Users\surya\Desktop\Programs\ReactJS\tthackathon-project-site\AI models\_token model 1"
-# Paths for Vosk and Transformer models
-VOSK_MODEL_PATH = r"C:\Users\surya\Desktop\Programs\ReactJS\tthackathon-project-site\AI models\vosk-model-en-in-0.5"
+CLAIM_MODEL_PATH = r"path_to_your_ba-claim/distilbert"
+VOSK_MODEL_PATH = r"path_to_vosk_asr_model"
 
 
 if not os.path.exists(VOSK_MODEL_PATH):
@@ -48,7 +44,7 @@ tokenizer = AutoTokenizer.from_pretrained(CLAIM_MODEL_PATH)
 claim_model = AutoModelForSequenceClassification.from_pretrained(CLAIM_MODEL_PATH)
 claim_pipeline = pipeline("text-classification", model=claim_model, tokenizer=tokenizer)
 
-# saurav
+
 def extract_and_resample_audio(video_path, output_audio_path="temp_audio.wav", target_sample_rate=16000):
     try:
         subprocess.run(
@@ -61,8 +57,6 @@ def extract_and_resample_audio(video_path, output_audio_path="temp_audio.wav", t
     except Exception as e:
         return None
 
-
-# saurav
 def transcribe_audio_vosk(audio_path):
     try:
         with wave.open(audio_path, "rb") as wf:
@@ -83,7 +77,7 @@ def transcribe_audio_vosk(audio_path):
             return transcription.strip()
     except Exception as e:
         return ""
-# saurav
+
 def check_claim(claim):
     try:
         inputs = tokenizer(claim, return_tensors="pt", truncation=True, padding=True, max_length=512)
@@ -124,27 +118,22 @@ def summarize_article(url):
 
 # Routes
 
-# saurav
+
 @app.route('/', methods=['GET', 'POST'])
 def video_verification():
     if request.method == 'GET':
-        # Return an informational message for GET requests
         return jsonify({"message": "Welcome to the video verification API. Use POST to upload a video file for processing."})
     
-    # Handle POST requests for video verification
     result = None
     transcription = None
     error_message = None
     try:
-        # Check if a file is uploaded
         if 'video' not in request.files:
             return jsonify({"error": "No file uploaded."}), 400
 
         video_file = request.files['video']
         if video_file.filename == '':
             return jsonify({"error": "No selected file."}), 400
-
-        # Ensure file is allowed
         if not allowed_file(video_file.filename):
             return jsonify({"error": "File type not allowed."}), 400
 
@@ -153,17 +142,17 @@ def video_verification():
         video_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
         video_file.save(video_path)
 
-        # Step 1: Extract and resample audio
+        # Extract and resample audio
         audio_path = extract_and_resample_audio(video_path)
         if not audio_path:
             return jsonify({"error": "Failed to process audio"}), 500
 
-        # Step 2: Transcribe the audio
+        #  Transcribe the audio
         transcription = transcribe_audio_vosk(audio_path)
         if not transcription:
             return jsonify({"error": "Failed to transcribe audio"}), 500
 
-        # Step 3: Verify claims
+        #  Verify claims
         result = check_claim(transcription)
         return jsonify({"transcription": transcription, "claim_verification": result})
     except Exception as e:
