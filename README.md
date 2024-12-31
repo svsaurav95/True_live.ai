@@ -106,11 +106,23 @@ FLASK_APP=app.py
 ```bash
 flask run
 ```
-
+#### Setup Frontend
+```bash
+cd src 
+```
+Install React Dependencies 
+```bash 
+npm install
+```
+Run React App
+```bash
+npm start
+```
 #### Access the Application
 
 ```bash
 Open your browser or terminal and navigate to `http://localhost:5000`.
+The React app should be available at `http://localhost:3000`.
 ```
 
 ### License
