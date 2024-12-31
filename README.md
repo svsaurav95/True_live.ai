@@ -25,7 +25,7 @@ True\_live.ai is an innovative project designed to bring real-time analytics, ma
 - News Summarization: Generate concise summaries of news articles for quick insights.
 - 
 <p align="center">
-  <img src="images/get_started.jpg width="45%" />
+  <img src="images/get_started.jpg" alt= "get_started" width="45%" />
   <img src="images/result.jpg" alt="result" width="45%" />
 </p>
 
