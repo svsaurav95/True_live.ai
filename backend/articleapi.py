@@ -3,43 +3,36 @@ from transformers import AutoTokenizer, AutoModelForSequenceClassification
 from newspaper import Article
 from flask import Flask, render_template_string, request
 
-# Initialize Flask app
 app = Flask(__name__)
 
 # Load your pre-trained model and tokenizer
-MODEL_PATH = r"C:\Users\surya\Desktop\_token model 1"
+MODEL_PATH = "path_to_ba-claim/distilbert_on_local"
 tokenizer = AutoTokenizer.from_pretrained(MODEL_PATH)
 model = AutoModelForSequenceClassification.from_pretrained(MODEL_PATH)
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
-    result = None  # Variable to store the result
-    input_url = None  # Variable to store the article URL
-    error_message = None  # Error message if URL is invalid
+    result = None 
+    input_url = None  
+    error_message = None 
 
     if request.method == 'POST':
-        # Get the article URL from the form
         input_url = request.form['article_url']
-
         try:
-            # Process the article
             article = Article(input_url)
             article.download()
             article.parse()
 
-            # Combine title and text to form the input for the model
             article_text = f"Title: {article.title}\nContent: {article.text}"
-
-            # Tokenize the input text
             inputs = tokenizer(article_text, return_tensors="pt", truncation=True, padding=True)
 
-            # Perform inference
+            #  inference
             with torch.no_grad():
                 outputs = model(**inputs)
                 logits = outputs.logits
                 predicted_class = torch.argmax(logits, dim=1).item()
 
-            # Map class index to a label (adjust the class labels as per your model)
+            # Map class index to a label 
             class_labels = ["True", "False", "Unverified"]  # Adjust as per your model's output
             result = class_labels[predicted_class] if predicted_class < len(class_labels) else "Unknown"
 
