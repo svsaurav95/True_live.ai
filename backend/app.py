@@ -34,8 +34,8 @@ def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 # Paths for models
-CLAIM_ONNX_MODEL_PATH = r"C:\Users\surya\Desktop\Programs\ReactJS\tthackathon-project-site\AI models\distilbert_local_model_quantized.onnx"
-VOSK_MODEL_PATH = r"C:\Users\surya\Desktop\Programs\ReactJS\tthackathon-project-site\AI models\vosk-model-small-en-in-0.4"
+CLAIM_ONNX_MODEL_PATH = r"models/distilbert_local_model_quantized.onnx"
+VOSK_MODEL_PATH = r"models/vosk-model-small-en-in-0.4"
 
 # Ensure models exist
 if not os.path.exists(VOSK_MODEL_PATH):
